@@ -48,10 +48,12 @@ class SleepDetail(generics.RetrieveAPIView):
         200:
         '''"data": [
         {
+            "id": 1,
             "datetime": "2020-06-29T16:27:58.169824Z",
             "status": "데이터 에러"
         },
         {
+            "id": 1,
             "datetime": "2020-06-29T16:27:58.169824Z",
             "status": "힘든 하루 힘내세요"
         }
@@ -71,6 +73,7 @@ def sleep_record(request):
         records = SleepRecord.objects.filter(owner=request.user)
         page -= 1
         status = [{
+            "id": record.id,
             "datetime": record.datetime,
             "status": convert_status_to_string(json.loads(record.data))
         } for record in records[per_page * page:per_page * page + per_page]]

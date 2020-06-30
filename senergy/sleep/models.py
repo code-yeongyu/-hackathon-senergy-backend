@@ -8,5 +8,6 @@ class SleepRecord(models.Model):
                               related_name='sleep_owner',
                               on_delete=models.CASCADE,
                               null=False)
+    id = models.AutoField(primary_key=True)
     datetime = models.DateTimeField(default=datetime.now)
     data = models.TextField(default='[]')

@@ -87,6 +87,9 @@ def register(request):  # fix here
             serializer.save()
             return Response(status=status.HTTP_201_CREATED)
         Profile.objects.get(user=user).delete()
+        #import pdb; pdb.set_trace()
+        print(serializer.errors)
         return Response(serializer.errors,
                         status=status.HTTP_406_NOT_ACCEPTABLE)
+    print(serializer.errors)
     return Response(form.errors, status=status.HTTP_406_NOT_ACCEPTABLE)

@@ -91,5 +91,6 @@ def register(request):  # fix here
         print(serializer.errors)
         return Response(serializer.errors,
                         status=status.HTTP_406_NOT_ACCEPTABLE)
-    print(serializer.errors)
+    print("form not valid")
+    print(form.errors)
     return Response(form.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
